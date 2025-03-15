@@ -7,23 +7,8 @@ local supported_games = {
 };
 
 getgenv().hub_enviorment = {
-	
-	Signals = {},
 	hub_version = game:HttpGet("https://raw.githubusercontent.com/luna-xyz/roblox/refs/heads/main/version.txt");
 };
-
-function hub_enviorment:AddSignal(s, __f)
-	table.insert(hub_enviorment.Signals, s:Connect(__f));
-end;
-
-function hub_enviorment:DisconnectAll()
-
-	for Idx = #hub_enviorment.Signals, 1, -1 do
-
-		local Connection = table.remove(hub_enviorment.Signals, Idx);
-		Connection:Disconnect();
-	end;
-end;
 
 function hub_enviorment:Notify(text)
 
