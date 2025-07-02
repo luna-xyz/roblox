@@ -293,7 +293,7 @@ function Library:Remove()
 		Callbacks.Groups[self.Group] = nil
 	end
 
-	for i, v in pairs(self.Components) dodo
+	for i, v in pairs(self.Components) do
 
 		v.Visible = false;
 		v:Remove();
