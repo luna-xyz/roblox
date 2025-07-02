@@ -7,13 +7,22 @@ The current loadstring is:
 ```lua
 loadstring(game:HttpGet("https://raw.githubusercontent.com/luna-xyz/roblox/refs/heads/main/main.lua"))()
 ```
+## Loadstring (TEST BUILD)
+The current loadstring is:
+```lua
+N/A
+```
 ## Compatibility
 Luna is compatible with the following:
 
-**PC Executors:**
+**PC Executors (tested):**
 * Wave
 * Swift
-* Synapse z
+* Visual
+
+* **PC Executors (not tested):**
+* AWP
+* Zenith
 
 **Mobile Executors:**
 * Krnl
