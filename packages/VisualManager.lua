@@ -462,6 +462,8 @@ function Callbacks:AddObjectListener(parent, options)
 
 				ColorDynamic = options.ColorDynamic,
 				Name = type(options.CustomName) == "function" and options.CustomName(obj) or options.CustomName,
+				
+				Group = options.Group,
 
 				IsEnabled = options.IsEnabled,
 				RenderInNil = options.RenderInNil;
