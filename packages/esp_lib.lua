@@ -100,7 +100,7 @@ local WorldToViewportPoint = currentCam.WorldToViewportPoint;
 
 function Methods:Draw(obj, props)
 
-	local new = require(script:WaitForChild("Drawing")).new(obj);
+	local new = Drawing.new(obj);
 
 	props = props or {};
 	
@@ -531,7 +531,7 @@ local function onPlayerAdded(player)
 end;
 
 for _, v in pairs(players:GetPlayers()) do
-	--[[if v ~= players.LocalPlayer then]] onPlayerAdded(v); --end;
+	if v ~= players.LocalPlayer then onPlayerAdded(v); end;
 end;
 
 players.PlayerAdded:Connect(onPlayerAdded);
