@@ -288,11 +288,7 @@ end
 function Library:Remove()
 
 	Callbacks.Objects[self.Object] = nil;
-
-	if Callbacks.Groups[self.Group] and #Callbacks.Groups[self.Group] <= 0 then
-		Callbacks.Groups[self.Group] = nil
-	end
-
+	
 	for i, v in pairs(self.Components) do
 
 		v.Visible = false;
