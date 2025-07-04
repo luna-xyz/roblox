@@ -3,7 +3,7 @@
 local RunService = game:GetService("RunService");
 local players = game:GetService("Players");
 
-local SignalManager = hub_enviorment:GetLib("SignalManager");
+local SignalManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/luna-xyz/roblox/refs/heads/main/packages/SignalManager.lua'))();
 
 ----- || LIBRARY || -----
 
@@ -480,6 +480,12 @@ function Callbacks:RemoveAll()
 	for _, v in pairs(self.Groups) do
 		if v and v.Objects then table.clear(v.Objects); end;
 	end;
+end;
+
+function Callbacks:Destroy()
+
+	Callbacks:RemoveAll();
+	SignalManager:RemoveAll();
 end;
 
 local function onCharAdded(char)
