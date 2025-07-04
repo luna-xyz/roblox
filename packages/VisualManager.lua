@@ -3,7 +3,7 @@
 local RunService = game:GetService("RunService");
 local players = game:GetService("Players");
 
-local SignalManager = hub_enviorment and hub_enviorment:GetLib("SignalManager") or loadstring(game:HttpGet('https://raw.githubusercontent.com/luna-xyz/roblox/refs/heads/main/packages/SignalManager.lua'))();
+local SignalManager = hub_enviorment:GetLib("SignalManager");
 
 ----- || LIBRARY || -----
 
