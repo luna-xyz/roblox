@@ -3,6 +3,8 @@
 local RunService = game:GetService("RunService");
 local players = game:GetService("Players");
 
+local SignalManager = hub_enviorment and hub_enviorment:GetLib("SignalManager") or loadstring(game:HttpGet('https://raw.githubusercontent.com/luna-xyz/roblox/refs/heads/main/packages/SignalManager.lua'))();
+
 ----- || LIBRARY || -----
 
 local Callbacks, Methods, Library = {}, {}, {};
@@ -288,7 +290,7 @@ end
 function Library:Remove()
 
 	Callbacks.Objects[self.Object] = nil;
-	
+
 	for i, v in pairs(self.Components) do
 
 		v.Visible = false;
@@ -401,13 +403,13 @@ function Callbacks:Add(obj, options)
 		table.insert(group.Objects, box);
 	end;
 
-	obj.AncestryChanged:Connect(function(_, parent)
+	SignalManager:AddSignal(obj.AncestryChanged, function(_, parent)
 		if parent == nil and box.AutoRemove then
 			box:Remove();
 		end;
 	end);
 
-	obj:GetPropertyChangedSignal("Parent"):Connect(function()
+	SignalManager:AddSignal(obj:GetPropertyChangedSignal("Parent"), function()
 		if obj.Parent == nil and box.AutoRemove then
 			box:Remove();
 		end;
@@ -417,33 +419,13 @@ function Callbacks:Add(obj, options)
 
 	if obj:FindFirstChildOfClass("Humanoid") then
 
-		obj:FindFirstChildOfClass("Humanoid").Died:Connect(function()
+		SignalManager:AddSignal(obj:FindFirstChildOfClass("Humanoid").Died, function()
 			if box.AutoRemove then box:Remove() end;
 		end);
 	end;
 
 	return box;
 end;
-
---[[function Callbacks:AddObjectListener(options)
-
-	assert(typeof(options.Listener) == "RBXScriptSignal", 'The listener must be a "RBXScriptSignal" not a "' .. tostring(typeof(options.Listener)) .. '"');
-
-	options.Listener:Connect(function(obj)
-		
-		assert(obj, "The listener did not return a object");
-		
-		if options.Validator and not options.Validator(obj) then
-			return
-		end
-
-		options.PrimaryPart = typeof(options.PrimaryPart) == "string" and obj:WaitForChild(options.PrimaryPart) or typeof(options.PrimaryPart) == "function" and options.PrimaryPart(obj);
-		options.Color = typeof(options.Color) == "function" and options.Color(obj) or options.Color;
-		
-		options.Name = typeof(options.Name) == "function" and options.Name(obj) or options.Name;
-		return Callbacks:Add(obj, options);
-	end);
-end;]]--
 
 function Callbacks:AddObjectListener(parent, options)
 
@@ -458,7 +440,7 @@ function Callbacks:AddObjectListener(parent, options)
 
 				ColorDynamic = options.ColorDynamic,
 				Name = type(options.CustomName) == "function" and options.CustomName(obj) or options.CustomName,
-				
+
 				Group = options.Group,
 
 				IsEnabled = options.IsEnabled,
@@ -471,7 +453,7 @@ function Callbacks:AddObjectListener(parent, options)
 
 	if options.Recursive then
 
-		parent.DescendantAdded:Connect(NewListener);
+		SignalManager:AddSignal(parent.DescendantAdded, NewListener);
 
 		for _, v in pairs(parent:GetDescendants()) do
 			coroutine.wrap(NewListener)(v);
@@ -479,7 +461,7 @@ function Callbacks:AddObjectListener(parent, options)
 
 	else
 
-		parent.ChildAdded:Connect(NewListener);
+		SignalManager:AddSignal(parent.ChildAdded, NewListener);
 
 		for _, v in pairs(parent:GetChildren()) do
 			coroutine.wrap(NewListener)(v);
@@ -508,7 +490,7 @@ local function onCharAdded(char)
 
 		local conn;
 
-		conn = char.ChildAdded:Connect(function(child)
+		conn = SignalManager:AddSignal(char.ChildAdded, function(child)
 
 			if tostring(child) ~= "HumanoidRootPart" then return; end;
 			conn:Disconnect();
@@ -537,7 +519,7 @@ end;
 
 local function onPlayerAdded(player)
 
-	player.CharacterAdded:Connect(onCharAdded);
+	SignalManager:AddSignal(player.CharacterAdded, onCharAdded);
 	if player.Character then coroutine.wrap(onCharAdded)(player.Character); end;
 end;
 
@@ -545,9 +527,9 @@ for _, v in pairs(players:GetPlayers()) do
 	if v ~= players.LocalPlayer then onPlayerAdded(v); end;
 end;
 
-players.PlayerAdded:Connect(onPlayerAdded);
+SignalManager:AddSignal(players.PlayerAdded, onPlayerAdded);
 
-RunService.RenderStepped:Connect(function()
+SignalManager:AddSignal(RunService.RenderStepped, function()
 
 	currentCam = workspace.CurrentCamera;
 
