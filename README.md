@@ -18,7 +18,7 @@ Luna is compatible with the following:
 **PC Executors (tested):**
 * Wave
 * Swift
-* Visual
+* bunni.lol (Visual)
 
 * **PC Executors (not tested):**
 * AWP
@@ -27,6 +27,7 @@ Luna is compatible with the following:
 **Mobile Executors:**
 * Krnl
 * Codex
+* Delta
 
 ## More Info
 Visit our Official Discord server [here](https://discord.gg/).
