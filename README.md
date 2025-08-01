@@ -20,7 +20,7 @@ Luna is compatible with the following:
 * Swift
 * bunni.lol (Visual)
 
-* **PC Executors (not tested):**
+**PC Executors (not tested):**
 * AWP
 * Zenith
 
