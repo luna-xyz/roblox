@@ -1,4 +1,4 @@
-luna.xyz Hub
+# luna.xyz Hub
 *By using Eclipse Hub or any services related, you automatically agree to the terms of service.*
 
 This is the official repository for Luna.xyz
