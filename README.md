@@ -1,4 +1,6 @@
-# Luna.xyz
+luna.xyz Hub
+*By using Eclipse Hub or any services related, you automatically agree to the terms of service.*
+
 This is the official repository for Luna.xyz
 - Other repostories are fake this is the official by "[luna-xyz](https://github.com/luna-xyz)"
 
@@ -30,4 +32,4 @@ Luna is compatible with the following:
 * Delta
 
 ## More Info
-Visit our Official Discord server [here](https://discord.gg/).
+Visit our Official Discord server [here](https://discord.gg/fjNc9ayrHX).
