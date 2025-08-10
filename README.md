@@ -32,4 +32,4 @@ Luna is compatible with the following:
 * Delta
 
 ## More Info
-Visit our Official Discord server [here](https://discord.gg/fjNc9ayrHX).
+Visit our Official Discord server [here](https://discord.gg/z5V9EAnhzj).
