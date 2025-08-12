@@ -3,6 +3,14 @@
 local SignalManager = {};
 SignalManager.__index = SignalManager;
 
+function SignalManager.__init()
+	
+	local self = setmetatable({}, SignalManager);
+	self._signals = {}; self._threads = {};
+
+	return self;
+end;
+
 function SignalManager:AddSignal(signal, callback)
 
 	local connection = signal:Connect(callback);
@@ -76,10 +84,4 @@ function SignalManager:RemoveAll()
 	self._signals = {}; self._threads = {};
 end;
 
-return function()
-	
-	local self = setmetatable({}, SignalManager);
-	self._signals = {}; self._threads = {};
-
-	return self;
-end;
+return SignalManager.__init();
