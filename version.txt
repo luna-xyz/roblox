@@ -1,1 +1,10 @@
-v4.2.1
+local versions = {
+
+	["luna_hub"] = "v4.2.1";
+	["rakoof"] = "v1.1.0";
+
+	["rake_remastered"] = "v1.0.0";
+	["revenant_sunrisen"] = "v1.0.0";
+};
+
+return versions;
