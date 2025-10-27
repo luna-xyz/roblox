@@ -4,7 +4,7 @@ local versions = {
 	["rakoof"] = "v1.1.0";
 
 	["rake_remastered"] = "v1.0.0";
-	["revenant_sunrisen"] = "v1.2.2";
+	["revenant_sunrisen"] = "v1.3.2";
 };
 
 return versions;
